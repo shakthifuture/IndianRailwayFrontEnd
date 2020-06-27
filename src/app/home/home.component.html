@@ -1,0 +1,9 @@
+<div class="card mt-4">
+    <h4 class="card-header">Railway station schedule</h4>
+    <div class="card-body">
+        <app-autocomplete (selectedStationEvent)="transfer($event)"></app-autocomplete>
+    </div>
+    <div class="card-body">
+        <app-table [selectedStation]="selectedStation"></app-table>
+    </div>
+</div>

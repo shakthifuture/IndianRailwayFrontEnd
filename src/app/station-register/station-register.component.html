@@ -1,0 +1,34 @@
+<div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="stationCode" class="label">Station Code</label>
+            <input type="text" formControlName="stationCode" class="inputbox form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.stationCode.errors }" />
+            <div *ngIf="submitted && f.stationCode.errors" class="invalid-feedback">
+                <div *ngIf="f.stationCode.errors.required">Station Code is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="stationName" class="label">Station Name</label>
+            <input type="text" formControlName="stationName" class="inputbox form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.stationName.errors }" />
+            <div *ngIf="submitted && f.stationName.errors" class="invalid-feedback">
+                <div *ngIf="f.stationName.errors.required">Station Name is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="longitude" class="label">Longitude</label>
+            <input type="text" formControlName="longitude" class="inputbox form-control"/>(Optional)
+        </div>
+        <div class="form-group">
+            <label for="latitude" class="label">Latitude</label>
+            <input type="text" formControlName="latitude" class="inputbox form-control" />(Optional)
+        </div>
+        <button class="btn btn-primary">
+            <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+            Save
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">Unable to save, please try again</div>
+        <div *ngIf="success" class="alert alert-success mt-3 mb-0">Successfully saved!</div>
+    </form>
+</div>

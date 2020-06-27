@@ -1,0 +1,84 @@
+<div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <mat-label>Train</mat-label>
+            <mat-form-field class="auto-full-width">
+                <input type="text" matInput formControlName="train" [matAutocomplete]="trainAuto">
+                <mat-autocomplete #trainAuto="matAutocomplete" [displayWith]="displayFnTrain">
+                    <mat-option *ngFor="let option of filteredTrainOptions | async" [value]="option">
+                        {{option.trainName}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-label>Source Station</mat-label>
+            <mat-form-field class="auto-full-width">
+                <input type="text" matInput formControlName="sourceStation" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let option of filteredStationOptions | async" [value]="option">
+                        {{option.stationName}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <div *ngIf="sameStation" class="alert alert-danger">
+                Source and Destination cannot be same
+            </div>
+        </div>
+        <div class="form-group">
+            <mat-label>Destination Station</mat-label>
+            <mat-form-field class="auto-full-width">
+                <input type="text" matInput formControlName="designStation" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let option of filteredStationOptions | async" [value]="option">
+                        {{option.stationName}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <div *ngIf="sameStation" class="alert alert-danger">
+                Source and Destination cannot be same
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="arrivalTime" class="label">Arrival Time</label>
+            <input type="time" formControlName="arrivalTime" class="inputbox form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.arrivalTime.errors }" />
+            <div *ngIf="submitted && f.arrivalTime.errors" class="invalid-feedback">
+                <div *ngIf="f.arrivalTime.errors.required">Arrival time is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="depatureTime" class="label">Depature Time</label>
+            <input type="time" formControlName="depatureTime" class="inputbox form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.depatureTime.errors }" />
+            <div *ngIf="submitted && f.depatureTime.errors" class="invalid-feedback">
+                <div *ngIf="f.depatureTime.errors.required">Depature time is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="days" class="label">Weekly schedule</label>
+            <span class="days">
+                <input type="checkbox" formControlName="sunday">
+                <label for="sunday">&nbsp;Sunday&nbsp;&nbsp;</label>
+                <input type="checkbox" formControlName="monday">
+                <label for="monday">&nbsp;Monday&nbsp;&nbsp; </label>
+                <input type="checkbox" formControlName="tuesday">
+                <label for="tuesday">&nbsp;Tuesday&nbsp;&nbsp; </label>
+                <input type="checkbox" formControlName="wednesday">
+                <label for="wednesday">&nbsp;Wednesday&nbsp;&nbsp; </label>
+                <input type="checkbox" formControlName="thursday">
+                <label for="thursday">&nbsp;Thursday&nbsp;&nbsp; </label>
+                <input type="checkbox" formControlName="friday">
+                <label for="friday">&nbsp;Friday&nbsp;&nbsp; </label>
+                <input type="checkbox" formControlName="saturday">
+                <label for="saturday">&nbsp;Saturday&nbsp;&nbsp; </label>
+            </span>
+        </div>
+        <button class="btn btn-primary">
+            <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+            Save
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">Unable to save, please try again</div>
+        <div *ngIf="success" class="alert alert-success mt-3 mb-0">Successfully saved!</div>
+    </form>
+</div>

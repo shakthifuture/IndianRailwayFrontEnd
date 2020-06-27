@@ -1,0 +1,29 @@
+.inputbox {
+    width: auto;
+    text-align: left;
+    float: right;
+    margin-right: 730px;
+}
+
+.days {
+    margin-left: 66px;
+}
+
+.mat-form-field {
+    float: right;
+    margin-right: 681px;
+    margin-top: -25px;
+}
+
+::ng-deep .cdk-overlay-pane {
+    /* Do you changes here */
+      min-width:450px;
+}
+
+.form-group {
+    margin-top: 36px;
+}
+
+.label {
+    margin-top: 9px;
+}

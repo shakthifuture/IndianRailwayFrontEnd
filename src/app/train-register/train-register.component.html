@@ -1,0 +1,26 @@
+<div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="trainNumber" class="label">Train Number</label>
+            <input type="number" formControlName="trainNumber" class="inputbox form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.trainNumber.errors }" />
+            <div *ngIf="submitted && f.trainNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.trainNumber.errors.required">Train Number is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="trainName" class="label">Train Name</label>
+            <input type="text" formControlName="trainName" class="inputbox form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.trainName.errors }" />
+            <div *ngIf="submitted && f.trainName.errors" class="invalid-feedback">
+                <div *ngIf="f.trainName.errors.required">Train Name is required</div>
+            </div>
+        </div>
+        <button class="btn btn-primary">
+            <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+            Save
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">Unable to save, please try again</div>
+        <div *ngIf="success" class="alert alert-success mt-3 mb-0">Successfully saved!</div>
+    </form>
+</div>

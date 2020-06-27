@@ -1,0 +1,22 @@
+<div class="card mt-4">
+    <h4 class="card-header">Admin Management - Indian Railway</h4>
+    <div class="card-body">
+        <mat-tab-group>
+            <mat-tab label="Add Train">
+                <ng-template matTabContent>
+                    <app-train-register></app-train-register>
+                </ng-template>
+            </mat-tab>
+             <mat-tab label="Add Station">
+                <ng-template matTabContent>
+                    <app-station-register></app-station-register>
+                </ng-template>
+            </mat-tab>
+            <mat-tab label="Create Schedule">
+                <ng-template matTabContent>
+                    <app-schedule-creator></app-schedule-creator>
+                </ng-template>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
